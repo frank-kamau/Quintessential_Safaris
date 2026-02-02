@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark main-navbar">
+  <div class="container">
+
+    <a class="navbar-brand fw-bold" href="/">
+    Quintessential<span class="text-warning">Safaris</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+
+        <li class="nav-item">
+          <a class="nav-link active" href="/">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/tours/">Tours</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'search_booking' %}">Search Booking</a>
+        </li>
+
+        <li class="nav-item ms-lg-3">
+          <a href="/contact/" class="btn btn-warning btn-sm px-4 rounded-pill">
+            Book Now
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>

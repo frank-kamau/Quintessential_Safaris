@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- HERO SLIDER -->
+<section class="hero-section">
+  <div class="swiper heroSwiper">
+    <div class="swiper-wrapper">
+      {% for slide in hero_slides %}
+      <div class="swiper-slide hero-slide" style="background-image: url('{% static slide.image %}')">
+        <div class="hero-overlay d-flex flex-column justify-content-center align-items-start text-white p-5">
+          <h1 class="display-4" data-aos="fade-up">{{ slide.title }}</h1>
+          <p class="lead mb-3" data-aos="fade-up" data-aos-delay="200">{{ slide.description }}</p>
+          
+          {% comment %}
+          Hero button always scrolls to #featured-tours, regardless of button_url
+          {% endcomment %}
+          {% if slide.button_text %}
+          <a href="#featured-tours" class="btn btn-warning btn-lg hero-scroll-btn" data-aos="fade-up" data-aos-delay="400">
+            {{ slide.button_text }}
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Swiper controls -->
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+
+<!-- FEATURED TOURS -->
+<section id="featured-tours" class="container my-5">
+  <h2 class="text-center fw-bold mb-4" data-aos="fade-up">Featured Tours</h2>
+
+  <div class="row g-4">
+    {% for tour in featured_tours %}
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="tour-card position-relative overflow-hidden shadow-sm rounded" data-aos="zoom-in">
+        
+        {% if tour.is_featured %}
+        <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2">Featured</span>
+        {% endif %}
+
+        <div class="tour-img-wrapper overflow-hidden">
+          <img src="{{ tour.image.url }}" alt="{{ tour.title }}" class="img-fluid tour-img">
+        </div>
+
+        <div class="tour-info p-3 bg-white">
+          <h5 class="mb-2">{{ tour.title }}</h5>
+          <p class="mb-3 fw-bold">KES {{ tour.price }}</p>
+          <a href="/tours/{{ tour.id }}/" class="btn btn-dark btn-sm">View Tour</a>
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="contact-section py-5" id="contact">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- Text -->
+      <div class="col-md-5 mb-4" data-aos="fade-right">
+        <h2 class="fw-bold">Get in Touch</h2>
+        <p class="text-muted">
+          Have questions or want a custom tour package?
+          Send us a message and our team will respond promptly.
+        </p>
+
+        <ul class="list-unstyled mt-4">
+          <li class="mb-2">📍 Nairobi, Kenya</li>
+          <li class="mb-2">📞 +254 724852418</li>
+          <li>✉ quintessentialsafarisltd@gmail.com</li>
+        </ul>
+      </div>
+
+      <!-- Form -->
+      <div class="col-md-7" data-aos="fade-left">
+        <div class="contact-card p-4 shadow-sm rounded-4">
+          <form method="post" action="">
+            {% csrf_token %}
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <textarea name="message" rows="4" class="form-control" placeholder="Your Message" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-warning px-4 rounded-pill">
+              Send Message
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends 'base.html' %} 
+{% block content %}
+
+<!-- HERO SLIDER -->
+<div class="swiper heroSwiper">
+  <div class="swiper-wrapper">
+
+    <div class="swiper-slide hero-slide" style="background-image:url('/static/images/hero.jpg')">
+      <div class="hero-overlay">
+        <h1>Discover Kenya</h1>
+        <p>Luxury safari & adventure tours</p>
+        <a href="/tours/" class="btn btn-warning btn-lg">Explore Tours</a>
+      </div>
+    </div>
+
+    <div class="swiper-slide hero-slide" style="background-image:url('/static/images/hero2.jpg')">
+      <div class="hero-overlay">
+        <h1>Adventure Awaits</h1>
+        <p>Unforgettable travel experiences</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FEATURED TOURS -->
+<section class="container my-5">
+  <h2 class="text-center fw-bold mb-4" data-aos="fade-up">Featured Tours</h2>
+
+  <div class="swiper tourSwiper">
+    <div class="swiper-wrapper">
+
+      {% for tour in featured_tours %}
+      <div class="swiper-slide">
+        <div class="tour-card" data-aos="zoom-in">
+          <img src="{{ tour.image.url }}" alt="{{ tour.title }}">
+          <div class="tour-info">
+            <h5>{{ tour.title }}</h5>
+            <p>KES {{ tour.price }}</p>
+            <a href="/tours/{{ tour.id }}/" class="btn btn-dark btn-sm">View Tour</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+
+  <!-- Controls -->
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>
+
+{% endblock %}
+{% endcomment %}
+

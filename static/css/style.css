@@ -1,0 +1,161 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.hero {
+  height: 40vh;
+  background: url('../images/hero.jpg') center/cover no-repeat;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 10%;
+}
+
+
+/* HERO SLIDER */
+.heroSwiper {
+  height: 95vh;
+}
+
+.hero-slide {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.55);
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10%;
+  color: #fff;
+}
+
+.hero-overlay h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+}
+
+.hero-overlay p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* ===== Featured Tours Cards ===== */
+.tour-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 0.5rem;
+}
+
+.tour-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tour-img-wrapper {
+  height: 200px;
+  overflow: hidden;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.tour-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.tour-card:hover .tour-img {
+  transform: scale(1.1);
+}
+
+.badge {
+  font-size: 0.8rem;
+  padding: 0.4em 0.6em;
+  border-radius: 0.3rem;
+  z-index: 10;
+}
+
+/* ===== Navbar ===== */
+.main-navbar {
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  padding: 1rem 0;
+  background: transparent;
+}
+
+.main-navbar.scrolled {
+  background: #0b1c2d;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-brand {
+  font-size: 1.4rem;
+}
+
+.nav-link {
+  font-weight: 500;
+  margin-left: 1rem;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: #ffc107 !important;
+}
+
+
+/* ===== Footer ===== */
+.footer {
+  background: #0b1c2d;
+  color: #fff;
+}
+
+.footer-link {
+  color: #bbb;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer-link:hover {
+  color: #ffc107;
+}
+
+.social-icon {
+  color: #bbb;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.social-icon:hover {
+  color: #ffc107;
+}
+
+.footer-bottom {
+  background: #081420;
+  color: #aaa;
+}
+
+/* ===== Contact Section ===== */
+.contact-section {
+  background: #f8f9fa;
+}
+
+.contact-card {
+  background: #fff;
+}
+
+.contact-card .form-control {
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}

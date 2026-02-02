@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">Available Tours</h2>
+
+  <div class="row">
+    {% for tour in tours %}
+    <div class="col-md-4 mb-4">
+      <div class="tour-card">
+        <img src="{{ tour.image.url }}" alt="{{ tour.title }}">
+        <div class="tour-info">
+          <h5>{{ tour.title }}</h5>
+          <p>{{ tour.destination }}</p>
+          <p><strong>KES {{ tour.price }}</strong></p>
+          <a href="{% url 'tour_detail' tour.id %}" class="btn btn-dark btn-sm">
+            View Details
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

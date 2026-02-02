@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-9">
+
+            <!-- Search Card -->
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-5">
+
+                    <!-- Header -->
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold">🔍 Search Your Booking</h2>
+                        <p class="text-muted">
+                            Enter your booking reference number to view your booking details
+                        </p>
+                    </div>
+
+                    <!-- Search Form -->
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text bg-light">
+                                🔑
+                            </span>
+                            <input
+                                type="text"
+                                name="reference"
+                                class="form-control"
+                                placeholder="e.g. BT-8F3K92"
+                                required
+                            >
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill">
+                                Search Booking
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Error Message -->
+                    {% if error %}
+                        <div class="alert alert-danger text-center mt-4">
+                            {{ error }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Booking Result -->
+            {% if booking %}
+            <div class="card shadow-sm border-0 rounded-4 mt-4">
+                <div class="card-body p-4">
+
+                    <h4 class="fw-bold mb-3">📄 Booking Details</h4>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <strong>Reference:</strong><br>
+                            {{ booking.reference }}
+                        </div>
+
+                        <div class="col-md-6 mb-2">
+                            <strong>Name:</strong><br>
+                            {{ booking.full_name }}
+                        </div>
+
+                        <div class="col-md-6 mb-2">
+                            <strong>Email:</strong><br>
+                            {{ booking.email }}
+                        </div>
+
+                        <div class="col-md-6 mb-2">
+                            <strong>Tour:</strong><br>
+                            {{ booking.tour.title }}
+                        </div>
+
+                        <div class="col-md-12 mt-2">
+                            <strong>Booked On:</strong><br>
+                            {{ booking.created_at|date:"M d, Y H:i" }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a
+                     href="{% url 'booking_receipt_pdf' booking.reference %}"
+                    class="btn btn-outline-success btn-lg rounded-pill"
+                    target="_blank"
+                >
+                    📄 Download PDF Receipt
+                </a>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

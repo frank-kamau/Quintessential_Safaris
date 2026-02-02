@@ -1,0 +1,7 @@
+Django>=5.0
+Pillow
+python-decouple
+django-crispy-forms
+crispy-bootstrap5
+stripe
+django-filter

@@ -1,0 +1,20 @@
+<h2>Booking Confirmation – Quintessential Safaris</h2>
+
+<p>Hello {{ booking.full_name }},</p>
+
+<p>Thank you for booking with <strong>Quintessential Safaris</strong>.</p>
+
+<h3>Booking Reference</h3>
+<p><strong>{{ booking.reference }}</strong></p>
+
+<h3>Booking Details</h3>
+<ul>
+  <li><strong>Tour:</strong> {{ booking.tour.title }}</li>
+  <li><strong>Persons:</strong> {{ booking.persons }}</li>
+  <li><strong>Email:</strong> {{ booking.email }}</li>
+</ul>
+
+<p>Our team will contact you shortly with further details.</p>
+
+<p>Warm regards,<br>
+<strong>Quintessential Safaris Team</strong></p>
