@@ -6,3 +6,5 @@ crispy-bootstrap5
 stripe
 django-filter
 psycopg[binary]
+python-dotenv
+
