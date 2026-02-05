@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -8,7 +9,7 @@ class Tour(models.Model):
     duration = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField()
-    image = models.ImageField(upload_to='tours/')
+    image = CloudinaryField("image")
     featured = models.BooleanField(default=False)
 
     def __str__(self):

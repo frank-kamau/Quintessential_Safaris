@@ -11,5 +11,8 @@ gunicorn
 dj-database-url
 whitenoise
 reportlab==4.1.0
+cloudinary
+django-cloudinary-storage
+
 
 
