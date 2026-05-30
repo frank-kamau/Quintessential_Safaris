@@ -19,6 +19,8 @@ from django.http import HttpResponse
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from tours import views
+
 
 def favicon_view(request):
     return HttpResponse(status=204)
@@ -29,5 +31,6 @@ urlpatterns = [
     path('tours/', include('tours.urls')),
     path('payments/', include('payments.urls')),
     path('bookings/', include('bookings.urls')),
+    path("about/", views.about, name="about"),
     path("favicon.ico", favicon_view),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

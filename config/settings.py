@@ -103,12 +103,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+# DATABASE_URL = os.getenv("DATABASE_URL")
+RENDER = os.getenv("RENDER", False)
 
-if DATABASE_URL:
+# if DATABASE_URL:
+if RENDER:
     DATABASES = {
         "default": dj_database_url.parse(
-            DATABASE_URL,
+            os.environ.get("DATABASE_URL"),
+            # DATABASE_URL,
             conn_max_age=600,
             ssl_require=True,
         )

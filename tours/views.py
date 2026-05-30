@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
-from .models import Tour
+from .models import Tour, Hotel
 from bookings.forms import BookingForm 
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
@@ -10,13 +10,19 @@ from bookings.utils import generate_booking_pdf
 
 
 
-def tour_list(request):
-    tours = Tour.objects.all()
-    return render(request, 'tours/tour_list.html', {'tours': tours})
+# def tour_list(request):
+#     tours = Tour.objects.all()
+#     return render(request, 'tours/tour_list.html', {'tours': tours})
 
 
 def tour_detail(request, pk):
     tour = get_object_or_404(Tour, pk=pk)
+    hotels = tour.hotels.all()
+
+    budget = request.GET.get('budget')
+
+    if budget:
+        hotels = hotels.filter(budget_type=budget)
 
     # ✅ ALWAYS initialize the form
     form = BookingForm()
@@ -103,8 +109,12 @@ def tour_detail(request, pk):
 
     return render(request, 'tours/tour_detail.html', {
         'tour': tour,
-        'form': form
+        'form': form,
+        'hotels': hotels
     })
+
+def about(request):
+     return render(request, "about.html")
 
     #         booking.save()
     #         return redirect('booking_success')
@@ -122,3 +132,20 @@ def tour_detail(request, pk):
 
 
     # return render(request, 'tours/tour_detail.html', {'tour': tour})
+
+
+def tours(request):
+    safari_tours = Tour.objects.filter(category='safari')
+    weekend_tours = Tour.objects.filter(category='weekend')
+
+    return render(request, 'tours/tour_list.html', {
+        'safari_tours': safari_tours,
+        'weekend_tours': weekend_tours
+    })
+
+def hotel_detail(request, pk):
+    hotel = Hotel.objects.get(id=pk)
+
+    return render(request, 'tours/hotel_detail.html', {
+        'hotel': hotel
+    })

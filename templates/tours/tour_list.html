@@ -2,6 +2,62 @@
 {% block content %}
 
 <div class="container my-5">
+
+  <!-- Page Header -->
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">Explore Our Tours</h2>
+    <p class="text-muted">Choose your adventure and travel in comfort</p>
+  </div>
+
+  <!-- Safari Packages -->
+  <h3 class="mb-4 border-bottom pb-2">Safari Packages</h3>
+  <div class="row">
+    {% for tour in safari_tours %}
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100 border-0">
+        <img src="{{ tour.image.url }}" class="card-img-top" alt="{{ tour.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ tour.title }}</h5>
+          <p class="text-muted">{{ tour.destination }}</p>
+          <p class="fw-bold text-success">Starting from KES {{ tour.price }}</p>
+          <a href="{% url 'tour_detail' tour.id %}" class="btn btn-dark btn-sm">
+            View Package
+          </a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+      <p>No safari packages available.</p>
+    {% endfor %}
+  </div>
+
+
+  <!-- Weekend Getaways -->
+  <h3 class="mt-5 mb-4 border-bottom pb-2">Weekend Getaways</h3>
+  <div class="row">
+    {% for tour in weekend_tours %}
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100 border-0">
+        <img src="{{ tour.image.url }}" class="card-img-top" alt="{{ tour.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ tour.title }}</h5>
+          <p class="text-muted">{{ tour.destination }}</p>
+          <p class="fw-bold text-success">Starting from KES {{ tour.price }}</p>
+          <a href="{% url 'tour_detail' tour.id %}" class="btn btn-success btn-sm">
+            Explore
+          </a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+      <p>No weekend packages available.</p>
+    {% endfor %}
+  </div>
+
+</div>
+
+
+{% comment %} <div class="container my-5">
   <h2 class="text-center mb-4">Available Tours</h2>
 
   <div class="row">
@@ -21,6 +77,6 @@
     </div>
     {% endfor %}
   </div>
-</div>
+</div> {% endcomment %}
 
 {% endblock %}
