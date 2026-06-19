@@ -1,6 +1,9 @@
 from pyexpat.errors import messages
 from django.contrib import messages
 from django.shortcuts import redirect, render
+from django.http import HttpResponse
+from django.contrib.auth.models import User
+from django.core.management import call_command
 from .forms import ContactForm
 from tours.models import Tour
 
@@ -54,3 +57,13 @@ def home(request):
     #     messages.success(request, "Thank you! We will contact you shortly.")
     
     return render(request, 'pages/home.html', context)
+
+def setup_view(request):
+    secret = request.GET.get('key')
+    if secret != 'your-random-secret-string-here':
+        return HttpResponse('Not authorized', status=403)
+    
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@gmail.com', 'Frank@123')
+        return HttpResponse('Superuser created successfully')
+    return HttpResponse('Superuser already exists')

@@ -20,6 +20,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from tours import views
+from pages.views import setup_view
 
 
 def favicon_view(request):
@@ -33,4 +34,5 @@ urlpatterns = [
     path('bookings/', include('bookings.urls')),
     path("about/", views.about, name="about"),
     path("favicon.ico", favicon_view),
+    path('setup-temp-xyz/', setup_view),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
