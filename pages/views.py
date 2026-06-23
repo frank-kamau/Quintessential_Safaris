@@ -58,12 +58,3 @@ def home(request):
     
     return render(request, 'pages/home.html', context)
 
-def setup_view(request):
-    secret = request.GET.get('key')
-    if secret != 'your-random-secret-string-here':
-        return HttpResponse('Not authorized', status=403)
-    
-    if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser('admin', 'admin@gmail.com', 'Frank@123')
-        return HttpResponse('Superuser created successfully')
-    return HttpResponse('Superuser already exists')

@@ -34,5 +34,4 @@ urlpatterns = [
     path('bookings/', include('bookings.urls')),
     path("about/", views.about, name="about"),
     path("favicon.ico", favicon_view),
-    path('setup-temp-xyz/', setup_view),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
