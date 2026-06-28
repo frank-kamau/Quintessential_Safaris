@@ -53,7 +53,7 @@
 
         <div class="tour-info p-3 bg-white">
           <h5 class="mb-2">{{ tour.title }}</h5>
-          <p class="mb-3 fw-bold">KES {{ tour.price }}</p>
+          {% comment %} <p class="mb-3 fw-bold">KES {{ tour.price }}</p> {% endcomment %}
           <a href="/tours/{{ tour.id }}/" class="btn btn-dark btn-sm">View Tour</a>
         </div>
 

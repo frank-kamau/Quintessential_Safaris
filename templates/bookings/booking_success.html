@@ -1,13 +1,48 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<div class="container my-5 text-center">
-  <h2 class="text-success">Booking Successful 🎉</h2>
-  <p>Thank you for booking with us. We will contact you shortly.</p>
-
-  <a href="/tours/" class="btn btn-dark mt-3">
-    Back to Tours
-  </a>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 text-center">
+            <div class="card shadow-lg border-0 rounded-4 p-5">
+                <!-- Success Icon -->
+                <div class="mb-4">
+                    <span style="font-size: 80px;">🎉</span>
+                </div>
+                <!-- Success Message -->
+                <h2 class="fw-bold text-success mb-3">Booking Successful!</h2>
+                <p class="text-muted mb-4">
+                    Thank you for booking with us. A confirmation email with your receipt has been sent to your email address.
+                </p>
+                <!-- Reference Number -->
+                {% if reference %}
+                <div class="alert alert-success rounded-3 mb-4">
+                    <p class="mb-1 text-muted small">Your Booking Reference</p>
+                    <h4 class="fw-bold mb-0">{{ reference }}</h4>
+                </div>
+                <p class="text-muted small mb-4">
+                    Please save this reference number. You can use it to search for your booking anytime.
+                </p>
+                {% endif %}
+                <!-- Action Buttons -->
+                <div class="d-grid gap-2">
+                    {% if reference %}
+                    <a href="{% url 'booking_receipt_pdf' reference %}" 
+                       class="btn btn-success btn-lg rounded-pill"
+                       target="_blank">
+                        📄 Download PDF Receipt
+                    </a>
+                    {% endif %}
+                    <a href="{% url 'search_booking' %}" 
+                       class="btn btn-outline-primary btn-lg rounded-pill">
+                        🔍 Search My Booking
+                    </a>
+                    <a href="/tours/" 
+                       class="btn btn-outline-dark btn-lg rounded-pill">
+                        Back to Tours
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
 {% endblock %}

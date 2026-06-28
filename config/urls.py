@@ -20,7 +20,6 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from tours import views
-from pages.views import setup_view
 
 
 def favicon_view(request):

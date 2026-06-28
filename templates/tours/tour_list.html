@@ -19,7 +19,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ tour.title }}</h5>
           <p class="text-muted">{{ tour.destination }}</p>
-          <p class="fw-bold text-success">Starting from KES {{ tour.price }}</p>
+          {% comment %} <p class="fw-bold text-success">Starting from KES {{ tour.price }}</p>  {% endcomment %}
           <a href="{% url 'tour_detail' tour.id %}" class="btn btn-dark btn-sm">
             View Package
           </a>
@@ -42,7 +42,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ tour.title }}</h5>
           <p class="text-muted">{{ tour.destination }}</p>
-          <p class="fw-bold text-success">Starting from KES {{ tour.price }}</p>
+          {% comment %} <p class="fw-bold text-success">Starting from KES {{ tour.price }}</p> {% endcomment %}
           <a href="{% url 'tour_detail' tour.id %}" class="btn btn-success btn-sm">
             Explore
           </a>

@@ -6,22 +6,7 @@ class BookingForm(forms.ModelForm):
         model = Booking
         fields = ['full_name', 'email', 'phone', 'persons']
 
-    # def __init__(self, *args, **kwargs):
-    #     self.tour = kwargs.pop('tour', None)
-    #     super().__init__(*args, **kwargs)
-
-    # def clean_email(self):
-    #     email = self.cleaned_data['email']
-
-    #     if self.tour and Booking.objects.filter(
-    #         tour=self.tour,
-    #         email=email
-    #     ).exists():
-    #         raise forms.ValidationError(
-    #             "You have already booked this tour using this email."
-    #         )
-
-    #     return email
+   
 
         widgets = {
             'full_name': forms.TextInput(attrs={

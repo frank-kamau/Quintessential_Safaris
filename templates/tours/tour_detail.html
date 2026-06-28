@@ -2,6 +2,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<style>
+    html { scroll-behavior: smooth; }
+</style>
+
 <div class="container my-5">
 
   <!-- TOUR HEADER -->
@@ -16,9 +20,12 @@
 
       <p><strong>Destination:</strong> {{ tour.destination }}</p>
       <p><strong>Duration:</strong> {{ tour.duration }}</p>
-      <p class="fw-bold text-success fs-5">
+      {% comment %} <p class="fw-bold text-success fs-5">
         Starting From KES {{ tour.price }}
-      </p>
+      </p> {% endcomment %}
+      <a href="#booking-form" class="btn btn-warning btn-sm px-4 rounded-pill">
+        📅 Book Now
+      </a>
     </div>
   </div>
 
@@ -58,6 +65,7 @@
 
   <!-- BOOKING FORM -->
   <hr class="my-5">
+  <hr class="my-5" id="booking-form">
 
   <div class="row">
     <div class="col-md-6 offset-md-3">
