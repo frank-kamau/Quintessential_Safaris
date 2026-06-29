@@ -91,4 +91,9 @@ window.addEventListener("scroll", () => {
     navbar.classList.remove("scrolled");
   }
 });
+
+// ADD THIS — apply dark background immediately on pages without a hero slider
+  if (!heroSwiperEl) {
+    navbar.classList.add("scrolled");
+  }
 });
