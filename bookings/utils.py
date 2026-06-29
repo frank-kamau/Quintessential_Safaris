@@ -134,7 +134,7 @@ def generate_booking_pdf(booking):
         spaceAfter=4,
     )
     elements.append(Paragraph(
-        "QuintessentialSafaris | quintessentialsafarisltd@gmail.com | +254 724852418",
+        "QuintessentialSafaris | quintessentialsafarisltd@gmail.com | +254 724232000",
         footer_style
     ))
     elements.append(Paragraph(
